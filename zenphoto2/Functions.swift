@@ -48,33 +48,14 @@ func URLinit() -> NSURL {
     
 }
 
-//func makeRequest(body:String) -> NSMutableURLRequest {
-//    
-//    var request = NSMutableURLRequest(URL: URLinit())
-//    
-//    var bodydata = body.dataUsingEncoding(NSUTF8StringEncoding)
-//    
-//    request.HTTPMethod = "POST"
-//    request.HTTPBody = bodydata
-//    request.allHTTPHeaderFields = ["User-Agent":"Lightroom Zenphoto Publisher Plugin/4.5.0.20130529"]
-//    
-//    return request
-//}
-
-var chkcnct = false
+var connection = true
 func checkConnection() -> Bool {
     
-    if config.stringForKey("URL") == "http://" || config.stringForKey("loginUsername") == "" || config.stringForKey("loginPassword") == "" {
+    if config.stringForKey("URL") == nil || config.stringForKey("loginUsername") == nil || config.stringForKey("loginPassword") == nil {
         return false
     }
     
     let method = "zenphoto.login"
-//    var body = method + "=" + encode64(userDatainit())!
-//    var request = makeRequest(body)
-//    
-//    var req = NSURLConnection.sendSynchronousRequest(request, returningResponse: nil, error: nil) as NSData!
-//    var responseStr: NSString = NSString(data:req, encoding:NSUTF8StringEncoding)!
-//    
     var d = encode64(userDatainit())!.stringByReplacingOccurrencesOfString("=", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
     var param = [method: d]
     
@@ -85,21 +66,16 @@ func checkConnection() -> Bool {
             alertView.message = "Login as " + String(config.stringForKey("loginUsername")!)
             alertView.addButtonWithTitle("close")
             alertView.show()
-            chkcnct = true
-            
+            connection = true
         } else {
-            alertView.title = "Success!"
-            alertView.message = "Login as " + String(config.stringForKey("loginUsername")!)
+            alertView.title = "Error!"
+            alertView.message = "Incorrect Username or Password!"
             alertView.addButtonWithTitle("close")
-            alertView.show()
-            chkcnct = false
-            
+            alertView.show()            
+            connection = false
         }
-    
     }
-    
-    return chkcnct
-        
+    return connection
 }
 
 func JSONStringify(jsonObj: AnyObject) -> String {

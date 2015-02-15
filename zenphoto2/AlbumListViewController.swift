@@ -7,91 +7,114 @@
 //
 
 import UIKit
+import Haneke
+import Alamofire
 
 class AlbumListViewController: UITableViewController {
 
+    var albums: [JSON]? = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        if (!checkConnection()) {
+            if (!config.boolForKey("firstRun")) {
+                config.setBool(true, forKey: "firstRun")
+            }
+            self.performSegueWithIdentifier("toSettingsView", sender: nil)            
+        } else {
+            self.getAlbumList()
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    // MARK: - Table view data source
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
-        return 0
+    
+    func getAlbumList() {
+        //refreshControl?.beginRefreshing()
+        
+        let method = "zenphoto.album.getList"
+        var d = encode64(userDatainit())!.stringByReplacingOccurrencesOfString("=", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        var param = [method : d]
+        
+        Alamofire.request(.POST, URLinit(), parameters: param).responseJSON { request, response, json, error in
+            if json != nil {
+                var jsonObj = JSON(json!)
+                if let results = jsonObj.arrayValue as [JSON]? {
+                    self.albums = results
+                    self.tableView.reloadData()
+                }
+            }
+        }
+        
     }
+    
+    // MARK: - Table view data source
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 0
+        return self.albums?.count ?? 0
+
     }
 
-    /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("AlbumCell", forIndexPath: indexPath) as UITableViewCell
+
+        var albumInfo = self.albums?[indexPath.row]
+        
+        var webpath = albumInfo?["thumbnail"].string
+        var albumFolder = albumInfo?["folder"].string
+        var id = albumInfo?["id"].string
+
+        var albumThumb = webpath!.substringFromIndex(advance(webpath!.startIndex, 1))
+        var URL: String! = config.stringForKey("URL")
+        if !URL.hasSuffix("/") {
+            URL = URL + "/"
+        }
+        
+        var albumThumbURL: String = String(format: URL + String(albumThumb))
+        var imageURL: NSURL = NSURL(string:albumThumbURL)!
+        
+        cell.textLabel!.text = albumFolder
+        cell.imageView?.hnk_setImageFromURL(imageURL)
+//
+//        var q_global: dispatch_queue_t = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+//        var q_main: dispatch_queue_t  = dispatch_get_main_queue()
+//        
+//        dispatch_async(q_global, {
+//            dispatch_async(q_main, {
+//                
+//                var imageURL: NSURL = NSURL(string:albumThumbURL)!
+//                var imageData: NSData = NSData(contentsOfURL: imageURL)!
+//                
+//                var image: UIImage = UIImage(data: imageData)!
+//                var croppedImage: UIImage = image.resizeSquare(80)
+//                
+//                cell.imageView!.image = croppedImage
+//                cell.textLabel!.text = albumFolder
+//                
+//            })
+//        })
+        cell.layoutSubviews()
 
         // Configure the cell...
 
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
+    // MARK: - Segues
+    
+//    override func prepareForSegue(segue:UIStoryboardSegue, sender:AnyObject?) {
+//        if segue.identifier == "showImageList" {
+//            var indexPath:NSIndexPath = self.tableView.indexPathForSelectedRow()!
+//            let imageListViewController = segue.destinationViewController as ImageListViewController
+//            let albumInfo = albums[indexPath.row]
+//            imageListViewController.albumInfo = albumInfo
+//        }
+//    }
+    
 }

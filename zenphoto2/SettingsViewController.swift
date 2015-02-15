@@ -44,7 +44,6 @@ class SettingsViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     @IBAction func save(sender: AnyObject) {
         config.setObject(Username.text, forKey: "loginUsername")
@@ -56,12 +55,10 @@ class SettingsViewController: UIViewController {
         
         if config.stringForKey("URL") != "http://" && config.stringForKey("loginUsername") != "" && config.stringForKey("loginPassword") != "" {
             
-            //            checkConnection()
-            
             if checkConnection() {
                 config.synchronize()
                 //var albumListView:AlbumListViewController = self.storyboard.instantiateViewControllerWithIdentifier("AlbumList")
-//                self.navigationController?.popToRootViewControllerAnimated(true)
+                self.navigationController?.popToRootViewControllerAnimated(true)
             }
             
         } else {
@@ -71,8 +68,7 @@ class SettingsViewController: UIViewController {
             alertView.addButtonWithTitle("close")
             alertView.show()
         }
-        
     }
-
+    
 
 }
