@@ -7,9 +7,6 @@
 //
 
 import UIKit
-import Alamofire
-import SwiftyJSON
-import AlamofireSwiftyJSON
 
 class SettingsViewController: UIViewController {
 

@@ -8,8 +8,6 @@
 
 import UIKit
 import Alamofire
-import SwiftyJSON
-import AlamofireSwiftyJSON
 
 let config = NSUserDefaults.standardUserDefaults()
 let alertView: UIAlertView = UIAlertView()
@@ -59,20 +57,26 @@ func checkConnection() -> Bool {
     var d = encode64(userDatainit())!.stringByReplacingOccurrencesOfString("=", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
     var param = [method: d]
     
-    Alamofire.request(.POST, URLinit(), parameters: param).responseSwiftyJSON { request, response, json, error in
+    Alamofire.request(.POST, URLinit(), parameters: param).responseJSON { request, response, json, error in
         
-        if (json["code"] == nil) {
-            alertView.title = "Success!"
-            alertView.message = "Login as " + String(config.stringForKey("loginUsername")!)
-            alertView.addButtonWithTitle("close")
-            alertView.show()
-            connection = true
-        } else {
-            alertView.title = "Error!"
-            alertView.message = "Incorrect Username or Password!"
-            alertView.addButtonWithTitle("close")
-            alertView.show()            
-            connection = false
+        if json != nil {
+            var jsonObj = JSON(json!)
+            if let results = jsonObj.arrayValue as [JSON]? {
+                println(results)
+//                if (results["code"].stringValue != "-1") {
+//                    alertView.title = "Success!"
+//                    alertView.message = "Login as " + String(config.stringForKey("loginUsername")!)
+//                    alertView.addButtonWithTitle("close")
+//                    alertView.show()
+//                    connection = true
+//                } else {
+//                    alertView.title = "Error!"
+//                    alertView.message = "Incorrect Username or Password!"
+//                    alertView.addButtonWithTitle("close")
+//                    alertView.show()            
+//                    connection = false
+//                }
+            }
         }
     }
     return connection

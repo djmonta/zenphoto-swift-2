@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import Haneke
 import Alamofire
+import Haneke
 
 class AlbumListViewController: UITableViewController {
 
@@ -69,7 +69,7 @@ class AlbumListViewController: UITableViewController {
         var webpath = albumInfo?["thumbnail"].string
         var albumFolder = albumInfo?["folder"].string
         var id = albumInfo?["id"].string
-
+        
         var albumThumb = webpath!.substringFromIndex(advance(webpath!.startIndex, 1))
         var URL: String! = config.stringForKey("URL")
         if !URL.hasSuffix("/") {
@@ -81,6 +81,8 @@ class AlbumListViewController: UITableViewController {
         
         cell.textLabel!.text = albumFolder
         cell.imageView?.hnk_setImageFromURL(imageURL)
+        
+        //cell.imageView!.image = hnk_setImageFromURL(imageURL)
 //
 //        var q_global: dispatch_queue_t = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
 //        var q_main: dispatch_queue_t  = dispatch_get_main_queue()
@@ -99,7 +101,6 @@ class AlbumListViewController: UITableViewController {
 //                
 //            })
 //        })
-        cell.layoutSubviews()
 
         // Configure the cell...
 
