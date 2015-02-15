@@ -1,0 +1,6 @@
+[submodule "HanekeSwift"]
+	path = HanekeSwift
+	url = https://github.com/Haneke/HanekeSwift.git
+[submodule "Alamofire-SwiftyJSON"]
+	path = Alamofire-SwiftyJSON
+	url = https://github.com/SwiftyJSON/Alamofire-SwiftyJSON.git
