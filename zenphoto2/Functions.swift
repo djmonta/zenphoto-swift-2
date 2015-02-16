@@ -58,24 +58,22 @@ func checkConnection() -> Bool {
     var param = [method: d]
     
     Alamofire.request(.POST, URLinit(), parameters: param).responseJSON { request, response, json, error in
-        
         if json != nil {
             var jsonObj = JSON(json!)
-            if let results = jsonObj.arrayValue as [JSON]? {
-                println(results)
-//                if (results["code"].stringValue != "-1") {
-//                    alertView.title = "Success!"
-//                    alertView.message = "Login as " + String(config.stringForKey("loginUsername")!)
-//                    alertView.addButtonWithTitle("close")
-//                    alertView.show()
-//                    connection = true
-//                } else {
-//                    alertView.title = "Error!"
-//                    alertView.message = "Incorrect Username or Password!"
-//                    alertView.addButtonWithTitle("close")
-//                    alertView.show()            
-//                    connection = false
-//                }
+            if let results = jsonObj["code"].stringValue as String? {
+                if (results != "-1") {
+                    alertView.title = "Success!"
+                    alertView.message = "Login as " + String(config.stringForKey("loginUsername")!)
+                    alertView.addButtonWithTitle("close")
+                    alertView.show()
+                    connection = true
+                } else {
+                    alertView.title = "Error!"
+                    alertView.message = "Incorrect Username or Password!"
+                    alertView.addButtonWithTitle("close")
+                    alertView.show()            
+                    connection = false
+                }
             }
         }
     }

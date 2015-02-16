@@ -14,13 +14,14 @@
 		7038D4EC1A90508400C7E855 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7038D4EA1A90508400C7E855 /* LaunchScreen.xib */; };
 		7038D4F81A90508400C7E855 /* zenphoto2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7038D4F71A90508400C7E855 /* zenphoto2Tests.swift */; };
 		7038D5151A90538C00C7E855 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7038D5141A90538C00C7E855 /* Functions.swift */; };
-		7038D54D1A909FF500C7E855 /* Haneke.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7038D53B1A90955600C7E855 /* Haneke.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7038D55D1A90A49E00C7E855 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7038D55C1A90A49E00C7E855 /* SettingsViewController.swift */; };
 		7038D55F1A90B6BA00C7E855 /* AlbumListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7038D55E1A90B6BA00C7E855 /* AlbumListViewController.swift */; };
 		7038D5611A90C64400C7E855 /* UIImage+Cropping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7038D5601A90C64400C7E855 /* UIImage+Cropping.swift */; };
-		7038D5951A90F3A800C7E855 /* Alamofire.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7038D58C1A90F39600C7E855 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7038D5961A90F3A800C7E855 /* Alamofire.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7038D58E1A90F39600C7E855 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7038D5981A90F47A00C7E855 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7038D5971A90F47A00C7E855 /* SwiftyJSON.swift */; };
+		704E35561A90FB6B00049E1A /* AlbumListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704E35551A90FB6B00049E1A /* AlbumListViewCell.swift */; };
+		7059F0C91A91B72600EC3EFD /* Alamofire.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7038D58C1A90F39600C7E855 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7059F0CA1A91B72600EC3EFD /* Alamofire.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7038D58E1A90F39600C7E855 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7059F0CB1A91B72D00EC3EFD /* Haneke.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7038D53B1A90955600C7E855 /* Haneke.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,9 +104,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				7038D5951A90F3A800C7E855 /* Alamofire.framework in Copy Frameworks */,
-				7038D5961A90F3A800C7E855 /* Alamofire.framework in Copy Frameworks */,
-				7038D54D1A909FF500C7E855 /* Haneke.framework in Copy Frameworks */,
+				7059F0CB1A91B72D00EC3EFD /* Haneke.framework in Copy Frameworks */,
+				7059F0C91A91B72600EC3EFD /* Alamofire.framework in Copy Frameworks */,
+				7059F0CA1A91B72600EC3EFD /* Alamofire.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -130,6 +131,7 @@
 		7038D5601A90C64400C7E855 /* UIImage+Cropping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Cropping.swift"; sourceTree = "<group>"; };
 		7038D5841A90F39600C7E855 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = SOURCE_ROOT; };
 		7038D5971A90F47A00C7E855 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		704E35551A90FB6B00049E1A /* AlbumListViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumListViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +177,7 @@
 				7038D5331A90955600C7E855 /* Haneke.xcodeproj */,
 				7038D4DE1A90508400C7E855 /* AppDelegate.swift */,
 				7038D55E1A90B6BA00C7E855 /* AlbumListViewController.swift */,
+				704E35551A90FB6B00049E1A /* AlbumListViewCell.swift */,
 				7038D55C1A90A49E00C7E855 /* SettingsViewController.swift */,
 				7038D4E51A90508400C7E855 /* Main.storyboard */,
 				7038D4E81A90508400C7E855 /* Images.xcassets */,
@@ -402,6 +405,7 @@
 			files = (
 				7038D4DF1A90508400C7E855 /* AppDelegate.swift in Sources */,
 				7038D4E21A90508400C7E855 /* zenphoto2.xcdatamodeld in Sources */,
+				704E35561A90FB6B00049E1A /* AlbumListViewCell.swift in Sources */,
 				7038D55D1A90A49E00C7E855 /* SettingsViewController.swift in Sources */,
 				7038D5151A90538C00C7E855 /* Functions.swift in Sources */,
 				7038D55F1A90B6BA00C7E855 /* AlbumListViewController.swift in Sources */,
@@ -622,6 +626,7 @@
 				7038D4FD1A90508400C7E855 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7038D4FE1A90508400C7E855 /* Build configuration list for PBXNativeTarget "zenphoto2Tests" */ = {
 			isa = XCConfigurationList;
@@ -630,6 +635,7 @@
 				7038D5001A90508400C7E855 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

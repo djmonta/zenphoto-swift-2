@@ -8,10 +8,9 @@
 
 import UIKit
 import Alamofire
-import Haneke
 
 class AlbumListViewController: UITableViewController {
-
+    
     var albums: [JSON]? = []
     
     override func viewDidLoad() {
@@ -21,13 +20,13 @@ class AlbumListViewController: UITableViewController {
             if (!config.boolForKey("firstRun")) {
                 config.setBool(true, forKey: "firstRun")
             }
-            self.performSegueWithIdentifier("toSettingsView", sender: nil)            
+            self.performSegueWithIdentifier("toSettingsView", sender: nil)
         } else {
             self.getAlbumList()
         }
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -53,69 +52,51 @@ class AlbumListViewController: UITableViewController {
     }
     
     // MARK: - Table view data source
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
         return self.albums?.count ?? 0
-
+        
     }
-
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("AlbumCell", forIndexPath: indexPath) as UITableViewCell
-
-        var albumInfo = self.albums?[indexPath.row]
+        let cell = tableView.dequeueReusableCellWithIdentifier("AlbumCell", forIndexPath: indexPath) as AlbumListViewCell
         
-        var webpath = albumInfo?["thumbnail"].string
-        var albumFolder = albumInfo?["folder"].string
-        var id = albumInfo?["id"].string
+        cell.albumInfo = self.albums?[indexPath.row]
         
-        var albumThumb = webpath!.substringFromIndex(advance(webpath!.startIndex, 1))
-        var URL: String! = config.stringForKey("URL")
-        if !URL.hasSuffix("/") {
-            URL = URL + "/"
-        }
+        //        var q_global: dispatch_queue_t = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+        //        var q_main: dispatch_queue_t  = dispatch_get_main_queue()
+        //
+        //        dispatch_async(q_global, {
+        //            dispatch_async(q_main, {
+        //
+        //                var imageURL: NSURL = NSURL(string:albumThumbURL)!
+        //                var imageData: NSData = NSData(contentsOfURL: imageURL)!
+        //
+        //                var image: UIImage = UIImage(data: imageData)!
+        //                var croppedImage: UIImage = image.resizeSquare(80)
+        //
+        //                cell.imageView!.image = croppedImage
+        //                cell.textLabel!.text = albumFolder
+        //
+        //            })
+        //        })
         
-        var albumThumbURL: String = String(format: URL + String(albumThumb))
-        var imageURL: NSURL = NSURL(string:albumThumbURL)!
-        
-        cell.textLabel!.text = albumFolder
-        cell.imageView?.hnk_setImageFromURL(imageURL)
-        
-        //cell.imageView!.image = hnk_setImageFromURL(imageURL)
-//
-//        var q_global: dispatch_queue_t = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
-//        var q_main: dispatch_queue_t  = dispatch_get_main_queue()
-//        
-//        dispatch_async(q_global, {
-//            dispatch_async(q_main, {
-//                
-//                var imageURL: NSURL = NSURL(string:albumThumbURL)!
-//                var imageData: NSData = NSData(contentsOfURL: imageURL)!
-//                
-//                var image: UIImage = UIImage(data: imageData)!
-//                var croppedImage: UIImage = image.resizeSquare(80)
-//                
-//                cell.imageView!.image = croppedImage
-//                cell.textLabel!.text = albumFolder
-//                
-//            })
-//        })
-
         // Configure the cell...
-
+        
         return cell
     }
     
     // MARK: - Segues
     
-//    override func prepareForSegue(segue:UIStoryboardSegue, sender:AnyObject?) {
-//        if segue.identifier == "showImageList" {
-//            var indexPath:NSIndexPath = self.tableView.indexPathForSelectedRow()!
-//            let imageListViewController = segue.destinationViewController as ImageListViewController
-//            let albumInfo = albums[indexPath.row]
-//            imageListViewController.albumInfo = albumInfo
-//        }
-//    }
+    //    override func prepareForSegue(segue:UIStoryboardSegue, sender:AnyObject?) {
+    //        if segue.identifier == "showImageList" {
+    //            var indexPath:NSIndexPath = self.tableView.indexPathForSelectedRow()!
+    //            let imageListViewController = segue.destinationViewController as ImageListViewController
+    //            let albumInfo = albums[indexPath.row]
+    //            imageListViewController.albumInfo = albumInfo
+    //        }
+    //    }
     
 }
