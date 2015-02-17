@@ -22,7 +22,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="http://" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uh8-jT-1gR">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="http://gallery.ampomtan.com/" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uh8-jT-1gR">
                                 <rect key="frame" x="175" y="173" width="250" height="30"/>
                                 <accessibility key="accessibilityConfiguration" label="Zenphoto Site URL"/>
                                 <constraints>
@@ -41,7 +41,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4LV-jy-ffv">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="monta" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4LV-jy-ffv">
                                 <rect key="frame" x="225" y="240" width="150" height="30"/>
                                 <accessibility key="accessibilityConfiguration" label="Username"/>
                                 <constraints>
@@ -112,25 +112,25 @@
             </objects>
             <point key="canvasLocation" x="565" y="557"/>
         </scene>
-        <!--Album List-->
+        <!--Album List View Controller-->
         <scene sceneID="3Vf-bp-9hU">
             <objects>
                 <tableViewController id="VeR-NU-Rrj" customClass="AlbumListViewController" customModule="zenphoto2" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" id="e6I-gC-SNq">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" id="e6I-gC-SNq">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="AlbumCell" rowHeight="50" id="cii-RZ-DD0" customClass="AlbumListViewCell" customModule="zenphoto2" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="AlbumCell" rowHeight="80" id="cii-RZ-DD0" customClass="AlbumListViewCell" customModule="zenphoto2" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cii-RZ-DD0" id="JEu-S4-NkQ">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mRp-Mr-zfa">
-                                            <rect key="frame" x="17" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="17" y="0.0" width="80" height="80"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="opq-Jh-RLJ">
-                                            <rect key="frame" x="75" y="14" width="484" height="21"/>
+                                            <rect key="frame" x="105" y="29" width="484" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
@@ -140,7 +140,7 @@
                                 <connections>
                                     <outlet property="albumName" destination="opq-Jh-RLJ" id="Vom-gW-go6"/>
                                     <outlet property="albumThumb" destination="mRp-Mr-zfa" id="cV5-UF-tvU"/>
-                                    <segue destination="1OI-6Q-K1F" kind="show" identifier="showImage" id="RrY-Pl-S7n"/>
+                                    <segue destination="SlU-dh-2rs" kind="show" identifier="showImageList" id="gih-8H-VM4"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -149,7 +149,7 @@
                             <outlet property="delegate" destination="VeR-NU-Rrj" id="WeU-Ld-Tie"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Album List" id="T3D-R3-lCc">
+                    <navigationItem key="navigationItem" id="T3D-R3-lCc">
                         <barButtonItem key="leftBarButtonItem" title="Settings" id="lTY-Hu-ZhS">
                             <connections>
                                 <segue destination="BYZ-38-t0r" kind="show" identifier="toSettingsView" id="RKB-2k-Phb"/>
@@ -161,6 +161,48 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tg8-sU-aKE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="565" y="-117"/>
+        </scene>
+        <!--Image List View Controller-->
+        <scene sceneID="vlb-Fb-nLD">
+            <objects>
+                <collectionViewController id="SlU-dh-2rs" customClass="ImageListViewController" customModule="zenphoto2" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="6ki-bN-KMn">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="jSC-SP-4PI">
+                            <size key="itemSize" width="125" height="125"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="1" maxX="0.0" maxY="1"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="Nrr-SK-2El">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KM3-SQ-nTn">
+                                            <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <connections>
+                                    <segue destination="1OI-6Q-K1F" kind="show" identifier="showImage" id="iGQ-Mn-cCS"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="SlU-dh-2rs" id="ebF-RU-m8x"/>
+                            <outlet property="delegate" destination="SlU-dh-2rs" id="6wU-Vg-bD1"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q29-i0-ONK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1209" y="-117"/>
         </scene>
         <!--Images View Controller-->
         <scene sceneID="w2W-nK-Z0a">
@@ -175,10 +217,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="9zL-Hc-JLV">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="jFL-LG-Sme"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oId-Pf-dAw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1209" y="-117"/>
+            <point key="canvasLocation" x="1869" y="-117"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="E7N-ot-8bT">
@@ -190,6 +235,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="1N7-V8-frw">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="VeR-NU-Rrj" kind="relationship" relationship="rootViewController" id="kbI-ac-WmW"/>
                     </connections>

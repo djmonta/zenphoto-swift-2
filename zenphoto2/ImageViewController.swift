@@ -13,7 +13,7 @@ class ImageView: UIViewController {
 
     var pageIndex : Int = 0
     var image : JSON?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,12 +23,12 @@ class ImageView: UIViewController {
         if !URL.hasSuffix("/") { URL = URL + "/" }
         let imageURL: NSURL = NSURL(string: URL + "albums/" + folder! + "/" + filename!)!
         
-        println(imageURL)
-        
-        let imageView = UIImageView(frame: CGRectMake(0,0, view.frame.size.width, view.frame.size.height))
+        let imageView = UIImageView(frame: CGRectMake(0, 0, view.frame.size.width, view.frame.size.height))
         imageView.contentMode = .ScaleAspectFit
         imageView.hnk_setImageFromURL(imageURL)
         self.view.addSubview(imageView)
+        
+        self.navigationItem.title = filename
         
 //        let label = UILabel(frame: CGRectMake(0, 0, view.frame.width, 200))
 //        label.textColor = UIColor.whiteColor()

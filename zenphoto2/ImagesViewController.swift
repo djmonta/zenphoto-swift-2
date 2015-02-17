@@ -13,6 +13,9 @@ class ImagesViewController: UIViewController, UIPageViewControllerDataSource {
 
     var pageViewController : UIPageViewController?
     var albumInfo: JSON?
+    var imageInfo: JSON?
+    var indexPath: Int?
+    
     var images: [JSON]? = []
     var currentIndex : Int = 0
     
@@ -51,7 +54,7 @@ class ImagesViewController: UIViewController, UIPageViewControllerDataSource {
     }
     
     func setupView() {
-        let startingViewController: ImageView = viewControllerAtIndex(0)!
+        let startingViewController: ImageView = viewControllerAtIndex(indexPath!)!
         let viewControllers: NSArray = [startingViewController]
         pageViewController!.setViewControllers(viewControllers, direction: .Forward, animated: false, completion: nil)
         pageViewController!.view.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height)
@@ -97,23 +100,22 @@ class ImagesViewController: UIViewController, UIPageViewControllerDataSource {
         
         // Create a new view controller and pass suitable data.
         let pageContentViewController = ImageView()
-        println(images?[index])
         
         pageContentViewController.image = images?[index]
-        //pageContentViewController.titleText = pageTitles[index]
+        pageContentViewController.navigationItem.title = images?[index]["name"].string
         pageContentViewController.pageIndex = index
         currentIndex = index
         
         return pageContentViewController
     }
     
-    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
-        return self.images?.count ?? 0
-    }
-    
-    func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
-        return 0
-    }
+//    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
+//        return self.images?.count ?? 0
+//    }
+//    
+//    func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
+//        return 0
+//    }
     
     /*
     // MARK: - Navigation

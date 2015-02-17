@@ -63,41 +63,18 @@ class AlbumListViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("AlbumCell", forIndexPath: indexPath) as AlbumListViewCell
         
-        //println(self.albums?[indexPath.row])
-        
         cell.albumInfo = self.albums?[indexPath.row]
-        
-        //        var q_global: dispatch_queue_t = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
-        //        var q_main: dispatch_queue_t  = dispatch_get_main_queue()
-        //
-        //        dispatch_async(q_global, {
-        //            dispatch_async(q_main, {
-        //
-        //                var imageURL: NSURL = NSURL(string:albumThumbURL)!
-        //                var imageData: NSData = NSData(contentsOfURL: imageURL)!
-        //
-        //                var image: UIImage = UIImage(data: imageData)!
-        //                var croppedImage: UIImage = image.resizeSquare(80)
-        //
-        //                cell.imageView!.image = croppedImage
-        //                cell.textLabel!.text = albumFolder
-        //
-        //            })
-        //        })
-        
-        // Configure the cell...
-        
         return cell
     }
     
     // MARK: - Segues
     
     override func prepareForSegue(segue:UIStoryboardSegue, sender:AnyObject?) {
-        if segue.identifier == "showImage" {
+        if segue.identifier == "showImageList" {
             var indexPath:NSIndexPath = self.tableView.indexPathForSelectedRow()!
-            let imagesViewController = segue.destinationViewController as ImagesViewController
-            let albumInfo = albums?[indexPath.row]
-            imagesViewController.albumInfo = albumInfo
+            let imageListViewController = segue.destinationViewController as ImageListViewController
+            let albumInfo = self.albums?[indexPath.row]
+            imageListViewController.albumInfo = albumInfo
         }
     }
     
