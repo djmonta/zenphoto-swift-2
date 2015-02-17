@@ -41,9 +41,9 @@ class ImageListViewController: UICollectionViewController {
         var width: CGFloat
         
         if screenSize.size.height > screenSize.size.width {
-            width = screenSize.size.width / 4
+            width = (screenSize.size.width - 3) / 4
         } else {
-            width = screenSize.size.width / 7
+            width = (screenSize.size.width - 6) / 7
         }
         
         size = CGSizeMake(width, width)
@@ -139,6 +139,7 @@ class ImageListViewController: UICollectionViewController {
             let imagesViewController = segue.destinationViewController as ImagesViewController
             let imageInfo = self.images?[indexPath.row]
             imagesViewController.indexPath = indexPath.row as Int
+            imagesViewController.images = images
             imagesViewController.albumInfo = albumInfo
             imagesViewController.imageInfo = imageInfo
         }

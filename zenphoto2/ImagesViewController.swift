@@ -12,45 +12,29 @@ import Alamofire
 class ImagesViewController: UIViewController, UIPageViewControllerDataSource {
 
     var pageViewController : UIPageViewController?
+    var images: [JSON]?
     var albumInfo: JSON?
     var imageInfo: JSON?
     var indexPath: Int?
     
-    var images: [JSON]? = []
+//    var images: [JSON]? = []
     var currentIndex : Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.automaticallyAdjustsScrollViewInsets = false
         pageViewController = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
         pageViewController!.dataSource = self
         
         var albumId: String = self.albumInfo?["id"].stringValue as String!
-        self.getImageList(albumId)
+        setupView()
 
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    func getImageList(id: String) {
-        
-        let method = "zenphoto.album.getImages"
-        var d = encode64(userDatainit(id: id))!.stringByReplacingOccurrencesOfString("=", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
-        var param = [method: d]
-        
-        Alamofire.request(.POST, URLinit(), parameters: param).responseJSON { request, response, json, error in
-            
-            if json != nil {
-                var jsonObj = JSON(json!)
-                if let results = jsonObj.arrayValue as [JSON]? {
-                    self.images = results
-                    self.setupView()
-                }
-            }
-        }
     }
     
     func setupView() {
