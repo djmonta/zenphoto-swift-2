@@ -26,7 +26,8 @@ class ImageView: UIViewController {
         println(imageURL)
         
         let imageView = UIImageView(frame: CGRectMake(0,0, view.frame.size.width, view.frame.size.height))
-        imageView.hnk_setImageFromURL(imageURL)        
+        imageView.contentMode = .ScaleAspectFit
+        imageView.hnk_setImageFromURL(imageURL)
         self.view.addSubview(imageView)
         
 //        let label = UILabel(frame: CGRectMake(0, 0, view.frame.width, 200))
