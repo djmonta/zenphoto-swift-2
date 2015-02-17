@@ -25,17 +25,40 @@ class AlbumListViewCell: UITableViewCell {
         var albumFolder = self.albumInfo?["folder"].string
         var id = self.albumInfo?["id"].string
         
-        var albumThumb = webpath!.substringFromIndex(advance(webpath!.startIndex, 1))
-        var URL: String! = config.stringForKey("URL")
-        if !URL.hasSuffix("/") {
-        URL = URL + "/"
-        }
+        var albumThumbFileName = webpath!.substringFromIndex(advance(webpath!.startIndex, 8))
+        var ext = webpath!.pathExtension.lowercaseString
+        var albumThumbNameWOExt = albumThumbFileName.stringByDeletingPathExtension
         
-        var albumThumbURL: String = String(format: URL + String(albumThumb))
+        var URL: String! = config.stringForKey("URL")
+        if !URL.hasSuffix("/") { URL = URL + "/" }
+        var cachePath = URL + "cache/"
+        
+        var albumThumbURL: String = String(format: cachePath + String(albumThumbNameWOExt) + "_300_cw300_ch300_thumb." + ext)
+        //println(albumThumbURL)
+        
         var imageURL: NSURL = NSURL(string:albumThumbURL)!
         
         self.albumName.text = albumFolder
-        self.albumThumb.hnk_setImageFromURL(imageURL)
+        
+        let cache = Shared.imageCache
+        
+        let iconFormat = Format<UIImage>(name: "icons", diskCapacity: 3 * 1024 * 1024) { image in
+            let resizer = ImageResizer(size: CGSizeMake(150,150), scaleMode: .AspectFill)
+            return resizer.resizeImage(image)
+        }
+        cache.addFormat(iconFormat)
+        
+        //let iURL = NSURL(string: "http://haneke.io/icon.png")!
+        var image = cache.fetch(URL: imageURL, formatName: "icons").onSuccess { image in
+            // image will be a nice rounded icon
+            
+            //var cropped = image.resizeSquare(100)
+            self.albumThumb.image = image
+        }
+        
+        //self.albumThumb.hnk_setImageFromURL(imageURL)
+
 
     }
+    
 }

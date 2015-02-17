@@ -23,7 +23,7 @@ extension UIImage {
         
         var magnify = CGFloat()
         
-        if (srcH > resizeX && srcH > resizeX) {
+        if (srcW > resizeX && srcH > resizeX) {
             //println("LargeImage")
             magnify = (srcH > srcW) ? (resizeX / srcW) : (resizeX / srcH)
             dstW = srcW * magnify

@@ -9,9 +9,7 @@
 /* Begin PBXBuildFile section */
 		7038D4DF1A90508400C7E855 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7038D4DE1A90508400C7E855 /* AppDelegate.swift */; };
 		7038D4E21A90508400C7E855 /* zenphoto2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7038D4E01A90508400C7E855 /* zenphoto2.xcdatamodeld */; };
-		7038D4E71A90508400C7E855 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7038D4E51A90508400C7E855 /* Main.storyboard */; };
 		7038D4E91A90508400C7E855 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7038D4E81A90508400C7E855 /* Images.xcassets */; };
-		7038D4EC1A90508400C7E855 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7038D4EA1A90508400C7E855 /* LaunchScreen.xib */; };
 		7038D4F81A90508400C7E855 /* zenphoto2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7038D4F71A90508400C7E855 /* zenphoto2Tests.swift */; };
 		7038D5151A90538C00C7E855 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7038D5141A90538C00C7E855 /* Functions.swift */; };
 		7038D55D1A90A49E00C7E855 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7038D55C1A90A49E00C7E855 /* SettingsViewController.swift */; };
@@ -20,8 +18,9 @@
 		7038D5981A90F47A00C7E855 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7038D5971A90F47A00C7E855 /* SwiftyJSON.swift */; };
 		704E35561A90FB6B00049E1A /* AlbumListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704E35551A90FB6B00049E1A /* AlbumListViewCell.swift */; };
 		7059F0C91A91B72600EC3EFD /* Alamofire.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7038D58C1A90F39600C7E855 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7059F0CA1A91B72600EC3EFD /* Alamofire.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7038D58E1A90F39600C7E855 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7059F0CB1A91B72D00EC3EFD /* Haneke.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7038D53B1A90955600C7E855 /* Haneke.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		707310321A91C1350080B7CB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7038D4E51A90508400C7E855 /* Main.storyboard */; };
+		707310331A91C1350080B7CB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7038D4EA1A90508400C7E855 /* LaunchScreen.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,7 +105,6 @@
 			files = (
 				7059F0CB1A91B72D00EC3EFD /* Haneke.framework in Copy Frameworks */,
 				7059F0C91A91B72600EC3EFD /* Alamofire.framework in Copy Frameworks */,
-				7059F0CA1A91B72600EC3EFD /* Alamofire.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -383,8 +381,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7038D4E71A90508400C7E855 /* Main.storyboard in Resources */,
-				7038D4EC1A90508400C7E855 /* LaunchScreen.xib in Resources */,
+				707310321A91C1350080B7CB /* Main.storyboard in Resources */,
+				707310331A91C1350080B7CB /* LaunchScreen.xib in Resources */,
 				7038D4E91A90508400C7E855 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

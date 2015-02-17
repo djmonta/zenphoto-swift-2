@@ -63,6 +63,8 @@ class AlbumListViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("AlbumCell", forIndexPath: indexPath) as AlbumListViewCell
         
+        //println(self.albums?[indexPath.row])
+        
         cell.albumInfo = self.albums?[indexPath.row]
         
         //        var q_global: dispatch_queue_t = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
