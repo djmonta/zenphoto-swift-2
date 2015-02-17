@@ -16,6 +16,8 @@
 		7038D55F1A90B6BA00C7E855 /* AlbumListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7038D55E1A90B6BA00C7E855 /* AlbumListViewController.swift */; };
 		7038D5611A90C64400C7E855 /* UIImage+Cropping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7038D5601A90C64400C7E855 /* UIImage+Cropping.swift */; };
 		7038D5981A90F47A00C7E855 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7038D5971A90F47A00C7E855 /* SwiftyJSON.swift */; };
+		7041CB5A1A930F5700BC3756 /* ImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7041CB591A930F5700BC3756 /* ImagesViewController.swift */; };
+		7041CB5C1A93123600BC3756 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7041CB5B1A93123600BC3756 /* ImageViewController.swift */; };
 		704E35561A90FB6B00049E1A /* AlbumListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704E35551A90FB6B00049E1A /* AlbumListViewCell.swift */; };
 		7059F0C91A91B72600EC3EFD /* Alamofire.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7038D58C1A90F39600C7E855 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7059F0CB1A91B72D00EC3EFD /* Haneke.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7038D53B1A90955600C7E855 /* Haneke.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -129,6 +131,8 @@
 		7038D5601A90C64400C7E855 /* UIImage+Cropping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Cropping.swift"; sourceTree = "<group>"; };
 		7038D5841A90F39600C7E855 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = SOURCE_ROOT; };
 		7038D5971A90F47A00C7E855 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		7041CB591A930F5700BC3756 /* ImagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagesViewController.swift; sourceTree = "<group>"; };
+		7041CB5B1A93123600BC3756 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		704E35551A90FB6B00049E1A /* AlbumListViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumListViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -176,6 +180,8 @@
 				7038D4DE1A90508400C7E855 /* AppDelegate.swift */,
 				7038D55E1A90B6BA00C7E855 /* AlbumListViewController.swift */,
 				704E35551A90FB6B00049E1A /* AlbumListViewCell.swift */,
+				7041CB591A930F5700BC3756 /* ImagesViewController.swift */,
+				7041CB5B1A93123600BC3756 /* ImageViewController.swift */,
 				7038D55C1A90A49E00C7E855 /* SettingsViewController.swift */,
 				7038D4E51A90508400C7E855 /* Main.storyboard */,
 				7038D4E81A90508400C7E855 /* Images.xcassets */,
@@ -402,6 +408,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7038D4DF1A90508400C7E855 /* AppDelegate.swift in Sources */,
+				7041CB5A1A930F5700BC3756 /* ImagesViewController.swift in Sources */,
+				7041CB5C1A93123600BC3756 /* ImageViewController.swift in Sources */,
 				7038D4E21A90508400C7E855 /* zenphoto2.xcdatamodeld in Sources */,
 				704E35561A90FB6B00049E1A /* AlbumListViewCell.swift in Sources */,
 				7038D55D1A90A49E00C7E855 /* SettingsViewController.swift in Sources */,
@@ -543,6 +551,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -559,6 +568,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

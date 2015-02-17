@@ -92,13 +92,13 @@ class AlbumListViewController: UITableViewController {
     
     // MARK: - Segues
     
-    //    override func prepareForSegue(segue:UIStoryboardSegue, sender:AnyObject?) {
-    //        if segue.identifier == "showImageList" {
-    //            var indexPath:NSIndexPath = self.tableView.indexPathForSelectedRow()!
-    //            let imageListViewController = segue.destinationViewController as ImageListViewController
-    //            let albumInfo = albums[indexPath.row]
-    //            imageListViewController.albumInfo = albumInfo
-    //        }
-    //    }
+    override func prepareForSegue(segue:UIStoryboardSegue, sender:AnyObject?) {
+        if segue.identifier == "showImage" {
+            var indexPath:NSIndexPath = self.tableView.indexPathForSelectedRow()!
+            let imagesViewController = segue.destinationViewController as ImagesViewController
+            let albumInfo = albums?[indexPath.row]
+            imagesViewController.albumInfo = albumInfo
+        }
+    }
     
 }

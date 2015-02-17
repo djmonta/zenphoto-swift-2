@@ -24,6 +24,7 @@
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="http://" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uh8-jT-1gR">
                                 <rect key="frame" x="175" y="173" width="250" height="30"/>
+                                <accessibility key="accessibilityConfiguration" label="Zenphoto Site URL"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="BFg-W6-7Ga"/>
                                     <constraint firstAttribute="width" constant="250" id="ZHh-uu-ck7"/>
@@ -42,6 +43,7 @@
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4LV-jy-ffv">
                                 <rect key="frame" x="225" y="240" width="150" height="30"/>
+                                <accessibility key="accessibilityConfiguration" label="Username"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="9vA-oH-tmd"/>
                                 </constraints>
@@ -59,6 +61,9 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YkM-4l-bLe">
                                 <rect key="frame" x="283" y="345" width="34" height="30"/>
+                                <accessibility key="accessibilityConfiguration" label="Save">
+                                    <accessibilityTraits key="traits" none="YES" button="YES"/>
+                                </accessibility>
                                 <state key="normal" title="Save">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -68,6 +73,7 @@
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t1R-9J-wMN">
                                 <rect key="frame" x="225" y="307" width="150" height="30"/>
+                                <accessibility key="accessibilityConfiguration" label="Password"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="32I-29-J33"/>
                                 </constraints>
@@ -104,7 +110,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="565" y="595"/>
+            <point key="canvasLocation" x="565" y="557"/>
         </scene>
         <!--Album List-->
         <scene sceneID="3Vf-bp-9hU">
@@ -134,6 +140,7 @@
                                 <connections>
                                     <outlet property="albumName" destination="opq-Jh-RLJ" id="Vom-gW-go6"/>
                                     <outlet property="albumThumb" destination="mRp-Mr-zfa" id="cV5-UF-tvU"/>
+                                    <segue destination="1OI-6Q-K1F" kind="show" identifier="showImage" id="RrY-Pl-S7n"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -155,6 +162,24 @@
             </objects>
             <point key="canvasLocation" x="565" y="-117"/>
         </scene>
+        <!--Images View Controller-->
+        <scene sceneID="w2W-nK-Z0a">
+            <objects>
+                <viewController id="1OI-6Q-K1F" customClass="ImagesViewController" customModule="zenphoto2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rdo-Z2-Zfg"/>
+                        <viewControllerLayoutGuide type="bottom" id="cyl-iS-rh4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ogr-zF-AfS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oId-Pf-dAw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1209" y="-117"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="E7N-ot-8bT">
             <objects>
@@ -171,7 +196,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yUF-HT-zyk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-135" y="-115"/>
+            <point key="canvasLocation" x="-85" y="-117"/>
         </scene>
     </scenes>
 </document>
